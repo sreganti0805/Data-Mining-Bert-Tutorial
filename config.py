@@ -10,4 +10,3 @@ EPOCHS     = 1
 LR         = 2e-5
 NUM_LABELS = 6     # scores 1-6
 SEED       = 42
-SAMPLE_SIZE = 50   # use only 50 essays for quick test
