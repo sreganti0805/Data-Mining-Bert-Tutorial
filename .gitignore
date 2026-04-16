@@ -1,0 +1,6 @@
+*.pt
+__pycache__/
+*.pyc
+slurm-*.out
+slurm-*.err
+bert_model/
