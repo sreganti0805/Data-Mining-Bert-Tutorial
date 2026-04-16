@@ -1,4 +1,5 @@
 # config.py — Edit these settings before running
+# NOTE: Replace all instances of 'sreganti' below with your iTiger username
 
 DATA_PATH      = 'essay.csv'         # path to your CSV file
 MODEL_NAME = '/project/sreganti/bert_model'
