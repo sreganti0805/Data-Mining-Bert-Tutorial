@@ -1,28 +1,56 @@
 # BERT Essay Scorer – Data Mining Tutorial
 
-A step-by-step tutorial for fine-tuning a BERT model to automatically score student essays (scores 1–6) using the University of Memphis iTiger GPU cluster.
+A step-by-step tutorial for fine-tuning a BERT model to automatically score student essays (scores **1–6**) using the University of Memphis **iTiger GPU cluster**.
 
-## Contents
-- `train.py` – Fine-tunes bert-base-uncased on the essay dataset
-- `predict.py` – Runs inference on a single essay or a CSV file
-- `config.py` – All hyperparameters and paths in one place
-- `run_train.sh` – SLURM job script for iTiger (bigTiger partition, RTX 5000)
-- `requirements.txt` – Python dependencies
-- `essay.csv` – ~3,000 student essays with scores 1–6
-- `DataMining_BERT_Tutorial.docx` – Full tutorial walkthrough
+This project demonstrates how to train a deep learning model for **Automated Essay Scoring (AES)** using **PyTorch**, **Hugging Face Transformers**, and **SLURM** on an HPC environment.
 
-## Expected Results
-~0.60 Quadratic Weighted Kappa (QWK) after 3 epochs — substantial agreement with human graders.
+---
 
-## Requirements
-- Access to the University of Memphis iTiger HPC cluster
-- VS Code with Remote – SSH extension
-- Python 3.8+, PyTorch 2.5.1 (cu121), HuggingFace Transformers
+# Overview
 
-## Usage
-Follow the steps in `DataMining_BERT_Tutorial.docx`. The short version:
-```bash
-git clone https://github.com/sreganti0805/Data-Mining-Bert-Tutorial.git
-cd Data-Mining-Bert-Tutorial
-sbatch run_train.sh
-```
+This tutorial walks you through fine-tuning a BERT model on **3,000 real student essays**. By the end, you will have a trained essay scoring model running on the iTiger cluster through VS Code Remote SSH.
+
+### Approximate Results
+
+Typical outcomes may vary depending on random seed, hardware, and environment.
+
+- ~0.45 QWK after 1 epoch  
+- ~0.52–0.56 QWK after 2 epochs  
+- ~0.58–0.62 QWK after 3 epochs  
+
+A QWK score around **0.60** represents substantial agreement with human graders.
+
+---
+
+# What is BERT?
+
+**BERT (Bidirectional Encoder Representations from Transformers)** is a pre-trained language model developed by Google. It has already learned the structure and meaning of English from billions of words.
+
+Instead of training from scratch, we **fine-tune** BERT for essay scoring by adding a classification head that predicts scores from **1 to 6**.
+
+---
+
+# What is QWK?
+
+**Quadratic Weighted Kappa (QWK)** is the standard evaluation metric for essay scoring.
+
+Unlike plain accuracy, QWK penalizes predictions that are far from the true score more heavily than nearby ones.
+
+Example:
+- Predicting **5 instead of 6** = small penalty  
+- Predicting **1 instead of 6** = large penalty
+
+---
+
+# Project Structure
+
+```text
+Data-Mining-Bert-Tutorial/
+├── config.py
+├── train.py
+├── predict.py
+├── run_train.sh
+├── requirements.txt
+├── essay.csv
+├── README.md
+└── DataMining_BERT_Tutorial.docx
