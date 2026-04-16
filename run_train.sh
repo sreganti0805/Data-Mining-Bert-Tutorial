@@ -4,8 +4,8 @@
 #SBATCH --partition=bigTiger
 #SBATCH --gres=gpu:rtx_5000:1
 #SBATCH --time=02:00:00
-#SBATCH --output=/project/sreganti/bert_essay/bert_essay/slurm-%j.out                       
-#SBATCH --error=/project/sreganti/bert_essay/bert_essay/slurm-%j.err                        
+#SBATCH --output=/project/sreganti/bert_essay/slurm-%j.out                       
+#SBATCH --error=/project/sreganti/bert_essay/slurm-%j.err                        
 
-cd /project/sreganti/bert_essay/bert_essay
+cd /project/sreganti/bert_essay
 /project/sreganti/miniconda3/bin/python -u train.py
